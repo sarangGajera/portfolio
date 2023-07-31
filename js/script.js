@@ -88,3 +88,37 @@ const navToggleBtn = document.querySelector(".nav-toggler"),
                 allSection[i].classList.toggle("open");
             }
         }
+
+
+
+
+
+function formsub(){
+    event.preventDefault()
+    let testdata = document.getElementById("textareass").value
+
+    let testaArray = []
+
+    testaArray.push({textDemo:testdata})
+    localStorage.setItem("testArraySet", JSON.stringify(testaArray))
+}
+
+
+let testDatagetArray = JSON.parse(localStorage.getItem("testArraySet"))
+
+
+function viewdemo(){
+   if(!testDatagetArray) return
+
+   viewData = ""
+
+   testDatagetArray.map((item) => {
+    viewData += `
+    <div>
+      <p class="m-0">${item.textDemo}</p>
+    </div>
+    `
+    document.querySelector(".boxDemo").innerHTML = viewData
+   })
+}
+viewdemo()
